@@ -74,7 +74,7 @@
             "name": "webnsg",
             "location": "[variables('location')]",
             "tags": {
-                "project": "qtlearning",
+                "project": "shivalearning",
                 "env": "dev"
             },
             "properties": {
@@ -197,12 +197,12 @@
             }
         },
         {
-            "name": "qtdbserverfromarm",
+            "name": "shivadbserverfromarm",
             "type": "Microsoft.Sql/servers",
             "apiVersion": "2022-02-01-preview",
             "location": "[variables('location')]",
             "tags": {
-                "displayName": "qtdbserverfromarm"
+                "displayName": "shivadbserverfromarm"
             },
             "properties": {
                 "administratorLogin": "[parameters('sqlusername')]",
@@ -213,7 +213,7 @@
                     "type": "firewallRules",
                     "apiVersion": "2014-04-01",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Sql/servers', 'qtdbserverfromarm')]"
+                        "[resourceId('Microsoft.Sql/servers', 'shivadbserverfromarm')]"
                     ],
                     "location": "[variables('location')]",
                     "name": "AllowAllWindowsAzureIps",
@@ -225,7 +225,7 @@
             ]
         },
         {
-            "name": "qtdbserverfromarm/sampledb",
+            "name": "shivadbserverfromarm/sampledb",
             "type": "Microsoft.Sql/servers/databases",
             "apiVersion": "2022-02-01-preview",
             "location": "[variables('location')]",
@@ -237,7 +237,7 @@
 
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers', 'qtdbserverfromarm')]"
+                "[resourceId('Microsoft.Sql/servers', 'shivadbserverfromarm')]"
             ],
             "properties": {
 
@@ -254,7 +254,7 @@
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "dnsSettings": {
-                    "domainNameLabel": "qtwebapp"
+                    "domainNameLabel": "shivawebapp"
                 }
             }
         },
@@ -287,7 +287,7 @@
                                 }
                             },
                             "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses','webip')]"
+                                "id":"[resourceId('Microsoft.Network/publicIPAddresses','webip')]"
                             }
                         }
                     }
@@ -298,7 +298,7 @@
         {
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2022-03-01",
-            "name": "qtwebvm",
+            "name": "shivawebvm",
             "location": "[variables('location')]",
             "properties": {
                 "networkProfile": {
@@ -312,7 +312,7 @@
                     ]
                 },
                 "osProfile": {
-                    "computerName": "qtwebvm",
+                    "computerName": "shivawebvm",
                     "adminPassword": "[parameters('vmpassword')]",
                     "adminUsername": "[parameters('vmusername')]"
                 },
@@ -328,8 +328,8 @@
                     },
                     "imageReference": {
                         "publisher": "Canonical",
-                        "offer": "001-com-ubuntu-server-jammy",
-                        "sku": "22_04-lts-gen2",
+                        "offer": "UbuntuServer",
+                        "sku": "18.04-LTS",
                         "version": "latest"
                     }
                 }
@@ -347,4 +347,3 @@
 
     ]
 }
-
