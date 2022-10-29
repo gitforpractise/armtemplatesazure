@@ -11,7 +11,7 @@
         "properties": {
           "mode": "Incremental",
           "templateLink": {
-            "uri":"https://raw.githubusercontent.com/asquarezone/ARMZone/master/Oct22/activity1/template.json",
+            "uri":"https://github.com/gitforpractise/armtemplateslatest/blob/master/completevpcwithvm.json",
             "contentVersion":"0.0.0.1"
           }
         }
